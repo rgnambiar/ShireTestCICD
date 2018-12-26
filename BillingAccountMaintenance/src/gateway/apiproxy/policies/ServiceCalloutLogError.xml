@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ServiceCalloutLogError">
+    <DisplayName>ServiceCallout.LogError</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="splunkRequest">
+        <Set>
+            <Verb>POST</Verb>
+            <!-- NOTE:  Set appName, level and message.  Leave all other params as is. -->
+            <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+                { 
+                 "appName": "@verifyapikey.VerifyAPIKey.developer.app.name#",
+                 "level": "ERROR",
+                  "message": "@flow.error.status# @flow.error.reason#- @flow.error.userMessage#",
+                  "clientIP": "@client.ip#",
+                  "proxyName": "@apiproxy.name#",
+                  "proxyRevision": "@apiproxy.revision#",
+                  "globalTransactionId": "@request.header.X-NW-Message-ID#",
+                  "localTransactionId": "@messageid#",
+                  "requestVerb": "@request.verb#",
+                  "requestVirtualHost":"@virtualhost.name#",
+                  "requestUri": "@request.uri#"
+                  }
+            </Payload>
+        </Set>
+        <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>logErrorCalloutResponse</Response>
+    <LocalTargetConnection>
+        <APIProxy>Logging_1</APIProxy>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </LocalTargetConnection>
+</ServiceCallout>

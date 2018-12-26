@@ -1,0 +1,100 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+            "targetServers": [
+                {
+                    "name": "apigwrouter",
+                    "host": "example.com",
+                    "isEnabled": true,
+                    "port": 80,
+                    "sSLInfo": {
+                        "enabled": "true",
+                        "clientAuthEnabled": "false",
+                        "keyStore": "keystore_name",
+                        "trustStore": "truststore_name",
+                        "keyAlias": "key_alias",
+                        "ignoreValidationErrors": "false"
+                    }
+                }
+            ],
+            "kvms": [
+                {
+                    "name": "backend_account_config",
+                    "entry": [
+                        {
+                            "name": "COMPANY",
+                            "value": "example.com"
+                        },
+                        {
+                            "name": "PREFIX",
+                            "value": "EXMPL"
+                        }
+                    ]
+                }
+            ]
+        },
+        "dev": {
+            "caches": [],
+            "targetServers": []
+        }
+    },
+    "orgConfig": {
+        "apiProducts": [
+            {
+                "name": "BAMSampleProduct",
+                "displayName": "BAM Sample Product",
+                "description": "BAM Sample Product",
+                "apiResources": [
+	                    "/**"
+                ],
+                "approvalType": "auto",
+                "attributes": [
+                    {
+                        "name": "developer.quota.limit",
+                        "value": "10000"
+                    },
+                    {
+                        "name": "developer.quota.interval",
+                        "value": "1"
+                    },
+                    {
+                        "name": "developer.quota.timeunit",
+                        "value": "month"
+                    }
+                ],
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "BillingAccountMaintenance"
+                ],
+                "quota": "10000",
+                "quotaInterval": "1",
+                "quotaTimeUnit": "month",
+                "scopes": []
+            }
+        ],
+        "developers": [
+            {
+                "attributes": [],
+                "email": "bamsample@example.com",
+                "firstName": "BAM",
+                "lastName": "Sample",
+                "userName": "Bam Sample"
+            }
+        ],
+        "developerApps": {
+            "bamsample@example.com": [
+                {
+                    "name": "BamSampleApp",
+                    "apiProducts": [
+                        "BAMSampleProduct"
+                    ],
+                    "callbackUrl": "http://bamsampleapp.com",
+                    "scopes": []
+                }
+            ]
+        }
+    }
+}

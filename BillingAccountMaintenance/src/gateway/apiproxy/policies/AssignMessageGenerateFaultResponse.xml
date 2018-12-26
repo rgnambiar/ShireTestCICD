@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessageGenerateFaultResponse">
+    <DisplayName>AssignMessage.GenerateFaultResponse</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+        <Payload contentType="application/json">
+            {   "userMessage": "{user.message}",
+                "developerMessage": {error.content},
+                "messageID": "{request.header.X-NW-Message-ID}",
+                "severity": "error",
+                "code": {error.status.code}
+            }
+        </Payload>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

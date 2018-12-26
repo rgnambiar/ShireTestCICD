@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="ExtractAccountNumber">
+    <Source>request</Source>
+    <Properties/>
+    <URIPath name="uriContext">
+        <Pattern ignoreCase="true">/{uriContext}/*</Pattern>
+    </URIPath>
+    <URIPath name="account_number">
+        <Pattern ignoreCase="true">/account/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/clients/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/producerInfo/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/policies/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/accountFinancialInfo/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/accountWarnings/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/accountAddtionalInfo/{account_number}</Pattern>
+        <Pattern ignoreCase="true">/counters/{account_number}</Pattern>
+    </URIPath>
+    <VariablePrefix>bam</VariablePrefix>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</ExtractVariables>

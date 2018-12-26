@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- this is disabled to make it easier to test this sample proxy, but needs to be enabled for your proxies -->
+<VerifyAPIKey async="false" continueOnError="false" enabled="true" name="Verify-API-Key-1">
+    <DisplayName>Verify API Key-1</DisplayName>
+    <Properties/>
+    <APIKey ref="request.header.client_id"/>
+</VerifyAPIKey>

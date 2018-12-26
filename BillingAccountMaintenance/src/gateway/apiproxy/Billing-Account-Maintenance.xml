@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="Billing-Account-Maintenance">
+    <Basepaths>/bam</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1521156003965</CreatedAt>
+    <CreatedBy>thomas.raju@apigee.corp-partner.google.com</CreatedBy>
+    <Description>Sample Billing Account Api is a aggregation api for customer billing.The api is designed to accept multiple Billing Account numbers and policies return Account Summary information for accounts.  Along with the summary information the api has the features to maintain and manage Accounts and Policies. For Account maintenance this api requires that the address be cleansed using standard CASS software (CODE1) before being consumed.
+</Description>
+    <DisplayName>Billing-Account-Maintenance</DisplayName>
+    <LastModifiedAt>1522155595135</LastModifiedAt>
+    <LastModifiedBy>thomas.raju@apigee.corp-partner.google.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:05827425d07d3398893994f382944706f796c55e2e888ef103f6f298c12a2f3f463736e38af5166752383f1fd86037aa6234f0c3981412bd9992d228872dbfd4</ManifestVersion>
+    <Policies>
+        <Policy>AssignMessageAPIKeyFault</Policy>
+        <Policy>AssignMessageDestinationUnreachableFault</Policy>
+        <Policy>AssignMessageGenerateFaultResponse</Policy>
+        <Policy>AssignMessageGenericFault</Policy>
+        <Policy>AssignMessageGenericOauthError</Policy>
+        <Policy>AssignMessageInsufficientScope</Policy>
+        <Policy>AssignMessageInvalidAccessToken</Policy>
+        <Policy>AssignMessageResourceNotFound</Policy>
+        <Policy>AssignMessageSetTargetHostGetAccount</Policy>
+        <Policy>AssignMessageSpikeArrestFault</Policy>
+        <Policy>Basic-Authentication</Policy>
+        <Policy>ConvertSOAPToJSON</Policy>
+        <Policy>CreateSOAPRequest</Policy>
+        <Policy>ExtractAccountNumber</Policy>
+        <Policy>JavaScriptCatchJSErrors</Policy>
+        <Policy>JavaScriptFineGrainedAuthorization</Policy>
+        <Policy>JavaScriptValidateRequestHeader</Policy>
+        <Policy>KVM-GetValidLDAPGroups</Policy>
+        <Policy>KVMBillingManagementServiceHost</Policy>
+        <Policy>KVMGetCredentials</Policy>
+        <Policy>OAuth-v20</Policy>
+        <Policy>Remove-Empty-Nodes</Policy>
+        <Policy>ServiceCalloutLogError</Policy>
+        <Policy>ServiceCalloutLogRequest</Policy>
+        <Policy>ServiceCalloutLogResponse</Policy>
+        <Policy>SpikeArrest</Policy>
+        <Policy>Verify-API-Key-1</Policy>
+        <Policy>add-cors</Policy>
+        <Policy>constructJsonResponse</Policy>
+        <Policy>get-response-soap-body</Policy>
+        <Policy>remove-header-authorization</Policy>
+        <Policy>remove-namespaces</Policy>
+        <Policy>set-response-soap-body</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>xsl://PZ5XEIQOperation-add-namespace.xsl</Resource>
+        <Resource>xsl://remove-empty-nodes.xslt</Resource>
+        <Resource>xsl://remove-namespaces.xslt</Resource>
+        <Resource>node://app.js</Resource>
+        <Resource>node://nock-helper.zip</Resource>
+        <Resource>node://node_modules.zip</Resource>
+        <Resource>node://package.json</Resource>
+        <Resource>openapi://association.json</Resource>
+        <Resource>jsc://JavaScriptFineGrainedAuthorization.js</Resource>
+        <Resource>jsc://JavaScriptValidateRequestHeader.js</Resource>
+        <Resource>jsc://base64.js</Resource>
+        <Resource>jsc://catchJSErrors.js</Resource>
+        <Resource>jsc://constructJsonResponse.js</Resource>
+        <Resource>jsc://parseJWT.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+        <TargetEndpoint>node</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

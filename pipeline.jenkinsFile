@@ -1,0 +1,203 @@
+#!/bin/groovy
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+import hudson.model.*
+
+node {
+
+    // we need to set a JVM for Apigee
+//    env.JAVA_HOME="${tool 'JDK 1.7.0_25'}"
+    env.JAVA_HOME="${tool 'JDK1.8.0_25'}"
+
+	
+//    env.JAVA_HOME="${tool 'jdk1.7.0_25'}"
+    env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+    env.mvnHome ="${tool 'Maven 3.5.0'}"
+//	env.mvnHome ="${tool 'apache-maven-3.5.0'}"
+
+      proxyCheckout()
+     // proxyGetCurrentRevision()
+     // proxyInstallConfig()
+     // proxyDeploy()
+      proxyApiCkliTests()
+      echo "${env.BUILD_STATUS}"
+      if (env.BUILD_STATUS != 'SUCCESS') {
+    //          proxyUnDeploy()
+    //          activatePreviousRevision()
+      }
+      runReports()
+}
+
+def runReports(){
+  step([$class: 'CucumberReportPublisher',
+            jenkinsBasePath: '',
+            fileIncludePattern: 'reports.json',
+            fileExcludePattern: '',
+            jsonReportDirectory: params.PROXY+'/target/apiproxy/tests',
+            ignoreFailedTests: true, missingFails: false, pendingFails: false, skippedFails: false, undefinedFails: false, parallelTesting: false])
+}
+def proxyCheckout () {
+    stage 'Checkout Proxy code'
+	print "cleaning up workspace"
+	sh "rm -rf /var/lib/jenkins/workspace/apigee-pipeline/*"
+    context="apigee"
+    checkout scm
+}
+
+def  proxyGetCurrentRevision() {
+    stage 'Get Current Revison of the Apigee Proxy in Environment params.ENV'
+        try {
+         List<String> artifacts = new ArrayList<String>()
+         def delimiter = '/'
+         def uri = '/v1/organizations/'
+         def resource = 'deployments'
+         def context = 'apis'
+         def host = params.HOST_URL
+         print "params.host" + host
+         def Edgeurl=params.HOST_URL+uri+params.ORG+delimiter+context+delimiter+params.ENV+delimiter+resource;
+          //def Edgeurl='https://api.enterprise.apigee.com/v1/organizations/euw1-partner04/environments/test/apis/BillingAccountMaintenance/deployments'
+         echo Edgeurl
+         def GetProxyArtifacts = new URL(Edgeurl).openConnection();
+         GetProxyArtifacts.requestMethod = 'GET'
+         GetProxyArtifacts.addRequestProperty("Content-Type", "application/json")
+         GetProxyArtifacts.addRequestProperty("Authorization", "Basic dGhvbWFzLnJhanVAYXBpZ2VlLmNvcnAtcGFydG5lci5nb29nbGUuY29tOkJldGgkQWxveSoxNTA2")
+         def getRC = GetProxyArtifacts.getResponseCode();
+         if(getRC.equals(200)) {
+                  artifacts = GetProxyArtifacts.getInputStream().readLines();
+                  print artifacts
+                  def revision = artifacts.findAll { item -> item.contains('<Revision ')}
+                  revision = revision.toString()
+                  env.currentApigeerevison = extractInts(revision)
+      }
+
+     }  catch (Exception e) {
+    print "There was a problem fetching the artifacts"
+}
+    if (currentBuild.result != 'SUCCESS') {
+        sh "exit 1"
+    }
+}
+def proxyInstallConfig () {
+
+    stage 'Building and Configurring ' +params.PROXY
+    try {
+		  sh "whoami"
+          def proxy = params.PROXY
+          def env = params.ENV
+//		  sh "cd /usr/local/apache-maven/apache-maven-3.5.3/bin/"
+//          sh "/usr/local/apache-maven/apache-maven-3.5.3/bin/mvn -f $proxy/pom.xml clean install -P apigee-build-bundle"
+//          sh "/usr/local/apache-maven/apache-maven-3.5.3/bin/mvn -f $proxy/pom.xml install -P apigee-config-bundle -DapigeeTargetEnv=$env -V"
+          sh "/c/apache/maven/apache-maven-3.5.2/bin/mvn -f $proxy/pom.xml clean install -P apigee-build-bundle,apigee-config-bundle -DapigeeTargetEnv=$env -V"
+//		  sh "npm list"
+//          sh "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.5.0/bin/mvn -f $proxy/pom.xml install -P apigee-config-bundle -DapigeeTargetEnv=$env -V -X"
+		  
+          currentBuild.result = 'SUCCESS'
+        } catch (Exception e) {
+       print "Error"
+       currentBuild.result = 'FAILURE'
+   }
+   if (currentBuild.result != 'SUCCESS') {
+       sh "exit 1"
+   }
+}
+
+
+def proxyApiCkliTests() {
+    stage 'ApiCkli Tests For ' + params.PROXY + 'in Target Env ' + params.ENV
+    try {
+              def proxy = params.PROXY
+              def ENV = params.ENV
+              def host = params.HOST_URL
+              def org = params.ORG
+              def uname = 'thomas.raju@apigee.corp-partner.google.com'
+              def pwd = 'Beth$Aloy*1506'
+              sh "rm $proxy/src/gateway/tests/reports.json;cd $proxy/src/gateway/apiproxy/tests/;npm install"
+//				sh "npm install"
+	       
+		  echo "removed files and installed npm"	
+	    
+              sh "/c/apache/maven/apache-maven-3.5.2/bin/mvn -f $proxy/pom.xml install -P apigee-test-proxy -DapigeeTargetEnv=$ENV -DapigeeHostUrl=$host -DapigeeUsername=$uname -DapigeePassword=$pwd -DapigeeOrg=$org"
+                   echo "Finished running mvn profile for cucumber tests"
+	    //              sh "/var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.5.0/bin/mvn -f $proxy/pom.xml install -P apigee-test-proxy -DapigeeTargetEnv=$ENV -DapigeeHostUrl=$host -DapigeeUsername=$env.APIGEE_USER  -DapigeePassword='I&Aet-nit17!' -DapigeeOrg=$org"
+
+              currentBuild.result = 'SUCCESS'
+              env.BUILD_STATUS = 'SUCCESS'
+          } catch (Exception e) {
+           print "Error"
+           currentBuild.result = 'FAILURE'
+
+       }
+       if (currentBuild.result != 'SUCCESS') {
+           env.BUILD_STATUS = 'FAILURE'
+           sh "exit 0"
+       }
+}
+
+/*def extractInts( String input ) {
+      input.findAll( /\d+/ )*.toInteger()
+      } */
+
+def proxyDeploy() {
+    stage 'Deploying Apigee Proxy ' + params.PROXY + 'to target Environment ' + params.ENV
+    try {
+          def proxy = params.PROXY
+          def ENV = params.ENV
+          def host = params.HOST_URL
+          def org = params.ORG
+		  def revision=params.CurrentActiveRevision
+		  if(ENV != 'dev'){
+		  echo "inside non-dev"+"Dev Active Revision<"+params.CurrentActiveRevision+">"
+		  echo "Deploy Details"+"ORG.....ENV....<"+params.ORG+params.ENV+params.host+env.APIGEE_USER">"	 
+		 sh "mvn install -f $proxy/pom.xml -P apigee-deploy-bundle -Dapigee.options=override -Dapigee.revision=$revision -DapigeeTargetEnv=$ENV -DapigeeHostUrl=$host -DapigeeUsername=$env.APIGEE_USER -DapigeePassword='Beth$Aloy*1506' -DapigeeOrg=$org"
+// use this api call for updating version
+		//sh "curl -X POST -H 'Content-type:application/x-www-form-urlencoded' -H 'Authorization: Basic dGhvbWFzLnJhanVAYXBpZ2VlLmNvcnAtcGFydG5lci5nb29nbGUuY29tOkJldGgkQWxveSoxNTA2' https://api.enterprise.apigee.com/v1/o/euw1-partner04/environments/test/apis/directory-search/revisions/$revision/deployments?'override=true&delay=15' -i"
+		  }
+		  else{
+		  echo "inside dev"
+		  sh "mvn install -f $proxy/pom.xml -P apigee-deploy-bundle -DapigeeTargetEnv=$ENV -DapigeeHostUrl=$host -DapigeeUsername=$env.APIGEE_USER -DapigeePassword='Beth$Aloy*1506' -DapigeeOrg=$org"
+		  
+		  }
+          currentBuild.result = 'SUCCESS'
+      } catch (Exception e) {
+       print "Error"+ e.fullStackTrace
+       currentBuild.result = 'FAILURE'
+      }
+}
+
+def activatePreviousRevision() {
+    stage 'Activating previous stable proxy revision for '+ env.PROXY + ' in Target Environment ' + params.ENV
+          def proxy = params.PROXY
+          def env = params.ENV
+          def host = params.HOST_URL
+          def org = params.ORG
+          def rev = params.CurrentActiveRevision
+          def url = host+'/v1/organizations/'+org+'/environments/'+env+'/apis/'+proxy+'/revisions/'+rev+'/deployments?override=true'
+          //sh "curl -v -u env.apigeeUsername:env.apigeePassword -H 'content-type: application/x-www-form-urlencoded' -X POST \"$host/v1/organizations/params.ORG/apis/$proxy/revisions/$rev/deployments?override=true"""
+          sh "curl -v --max-time 10.5 -H 'Authorization: Basic dGhvbWFzLnJhanVAYXBpZ2VlLmNvcnAtcGFydG5lci5nb29nbGUuY29tOkJldGgkQWxveSoxNTA2' -H 'content-type: application/x-www-form-urlencoded' -X POST $url"
+
+          currentBuild.result = 'SUCCESS'
+}
+def proxyUnDeploy() {
+    stage 'Undeploying current proxy revision for '+ env.PROXY + ' in Target Environment ' + params.ENV + params.CurrentActiveRevision
+    try {
+          def proxy = params.PROXY
+          def env = params.ENV
+          def host = params.HOST_URL
+          def org = params.ORG
+          def rev = params.CurrentActiveRevision
+          def delimiter = '/'
+          def uri = '/v1/organizations/'
+          def resource = 'deployments'
+          def context = 'apis'
+          def newDeployedrev = (rev as int)+1
+          print newDeployedrev
+          def url = host+'/v1/organizations/'+org+'/apis/'+proxy+'/revisions/'+newDeployedrev+'/deployments?action=undeploy&env='+env+'&force=true'
+          print url
+          //sh "curl -v -u ${env.apigeeUsername}:${env.apigeePassword} -X DELETE \"$host/v1/organizations/$org/apis/$PROXY/revisions/$rev/deployments?action=undeploy&env=$ENV&force=true"""
+            sh "curl -v --max-time 10.5 -H 'Authorization: Basic dGhvbWFzLnJhanVAYXBpZ2VlLmNvcnAtcGFydG5lci5nb29nbGUuY29tOkJldGgkQWxveSoxNTA2' -X DELETE $url"
+          currentBuild.result = 'SUCCESS'
+          } catch (Exception e) {
+            print "Error" + e.fullStackTrace
+            currentBuild.result = 'FAILURE'
+          }
+}

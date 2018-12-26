@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVMBillingManagementServiceHost" mapIdentifier="TargetHosts">
+    <DisplayName>KVM.GetBillingManagementServiceHost</DisplayName>
+    <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+    <Get assignTo="BillingManagementServiceHost" index="1">
+        <Key>
+            <Parameter>BillingManagementService.target.host</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

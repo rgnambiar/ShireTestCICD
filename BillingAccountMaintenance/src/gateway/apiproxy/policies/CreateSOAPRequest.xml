@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="CreateSOAPRequest">
+    <DisplayName>CreateSOAPRequest</DisplayName>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+    <Properties/>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">text/xml;charset=UTF-8</Header>
+        </Headers>
+        <Verb>POST</Verb>
+        <Payload content-type="text/xml">
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pz5="http://www.PZ5XEIQ.JZ5XEQ.Request.com">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <pz5:PZ5XEIQOperation>
+                        <pz5:inBillingAccountDetailReq>
+                            <pz5:inCommonRequestData>
+                                <pz5:inSoaTransID>01</pz5:inSoaTransID>
+                                <pz5:inCallingApplID>IVR</pz5:inCallingApplID>
+                                <pz5:inRacfID>MARTINK6</pz5:inRacfID>
+                                <pz5:inUserID>{private.username}</pz5:inUserID>
+                                <pz5:inUserDomain>ALL</pz5:inUserDomain>
+                                <pz5:inUserType>CSR</pz5:inUserType>
+                                <pz5:inUserProducerNumber>0123456</pz5:inUserProducerNumber>
+                                <pz5:inUserProducerState>OH</pz5:inUserProducerState>
+                                <pz5:inUserProducerType>PDS</pz5:inUserProducerType>
+                                <pz5:inTraceLevel>1</pz5:inTraceLevel>
+                            </pz5:inCommonRequestData>
+                            <pz5:inFunctionRequestData>
+                                <pz5:inFunctionCode>02</pz5:inFunctionCode>
+                                <pz5:inFunctionOption>BASC</pz5:inFunctionOption>
+                            </pz5:inFunctionRequestData>
+                            <pz5:inIntegrityTimestamp/>
+                            <pz5:inRequestKeyData>
+                                <pz5:inRequestAccountKey>
+                                    <pz5:inRequestAccountNumber>{bam.account_number}</pz5:inRequestAccountNumber>
+                                </pz5:inRequestAccountKey>
+                                <pz5:inRequestPolicyKey>
+                                    <pz5:inRequestProductGroupCodeDesc/>
+                                    <pz5:inRequestPolicyNumber/>
+                                </pz5:inRequestPolicyKey>
+                            </pz5:inRequestKeyData>
+                        </pz5:inBillingAccountDetailReq>
+                    </pz5:PZ5XEIQOperation>
+                </soapenv:Body>
+            </soapenv:Envelope>
+        </Payload>
+    </Set>
+</AssignMessage>

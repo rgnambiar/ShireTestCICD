@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessageSetTargetHostGetAccount">
+    <DisplayName>AssignMessage.SetTargetHostGetAccount</DisplayName>
+    <Add>
+        <Headers>
+            <Header name="X-NW-Target-URL">{BillingManagementServiceHost}/webservices/billingAccountDetails</Header>
+            <Header name="X-NW-Internal-FWD">true</Header>
+            <Header name="X-NW-API-Org">{organization.name}</Header>
+            <!-- <Header name="Authorization">Basic QklMVFpPU0M6ZmViYmlsMDE=</Header>-->
+        </Headers>
+    </Add>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

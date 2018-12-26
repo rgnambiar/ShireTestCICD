@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="false" timeLimit="200" name="JavaScriptFineGrainedAuthorization">
+    <DisplayName>JavaScriptFineGrainedAuthorization</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://parseJWT.js</ResourceURL>
+    <IncludeURL>jsc://base64.js</IncludeURL>
+</Javascript>

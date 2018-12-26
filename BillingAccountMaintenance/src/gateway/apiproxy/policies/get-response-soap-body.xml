@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="get-response-soap-body">
+    <DisplayName>Get Response SOAP Body XML</DisplayName>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="body">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse</JSONPath>
+        </Variable>
+        <Variable name="integrityTimeStamp">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.integrityTimestamp</JSONPath>
+        </Variable>
+        <Variable name="commonData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountCommon</JSONPath>
+        </Variable>
+        <Variable name="accountNumber">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.generalAccountInfo.accountNumber</JSONPath>
+        </Variable>
+        <Variable name="accountStatus">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.generalAccountInfo.accountStatus</JSONPath>
+        </Variable>
+        <Variable name="accountCommondata">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailCommon</JSONPath>
+        </Variable>
+        <Variable name="accountGeneralData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.generalAccountInfo</JSONPath>
+        </Variable>
+        <Variable name="accountProducerData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.producerInformation</JSONPath>
+        </Variable>
+        <Variable name="accountClientData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.clientData</JSONPath>
+        </Variable>
+        <Variable name="accountInstallmentData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.installmentandPayInFullinfo</JSONPath>
+        </Variable>
+        <Variable name="accntBalanceAndReinstateInfo">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.accntBalanceAndReinstateInfo</JSONPath>
+        </Variable>
+        <Variable name="paymentInformation">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.paymentInformation</JSONPath>
+        </Variable>
+        <Variable name="accountPolicyData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.policyData</JSONPath>
+        </Variable>
+        <Variable name="accountWarnings">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.accountWarningAndMessages</JSONPath>
+        </Variable>
+        <Variable name="accountAdditionalInfo">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.additionalAccountData</JSONPath>
+        </Variable>
+        <Variable name="accountCounterData">
+            <JSONPath>$.Envelope.Body.PZ5XEIQOperationResponse.billingAccountResponse.billingAccountDetail.billingAccountDetailData.counterData</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source>response</Source>
+</ExtractVariables>
