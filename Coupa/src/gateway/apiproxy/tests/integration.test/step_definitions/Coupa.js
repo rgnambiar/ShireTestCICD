@@ -11,7 +11,7 @@ var env = process.env.NODE_ENV || 'dev';
 module.exports = function() {
     // cleanup before every scenario
     this.Before(function(scenario, callback) {
-        this.apickli = new apickli.Apickli('http', url);
+        this.apickli = new apickli.Apickli('https', url);
         callback();
     });
 
