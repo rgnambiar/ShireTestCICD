@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="9" name="Coupa">
+    <Basepaths>/v1/coupa</Basepaths>
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1533718347553</CreatedAt>
+    <CreatedBy>ganesan.purushothaman@shire.com</CreatedBy>
+    <Description>API Proxy for Coupa APIs</Description>
+    <DisplayName>Coupa</DisplayName>
+    <LastModifiedAt>1542811562244</LastModifiedAt>
+    <LastModifiedBy>ganesan.purushothaman@shire.com</LastModifiedBy>
+    <ManifestVersion>SHA-512:e84ebdb1ffa8e229c98bbac7bd857579bc09c4f752e23b00401a9467d997f0e7ecaa69a15601603dd1e0c3f689ddcd7f4ad0608d97f5df740bae2cd4dab11474</ManifestVersion>
+    <Policies>
+        <Policy>AC-SetIPWhitelist</Policy>
+        <Policy>AM-SetRequest</Policy>
+        <Policy>FC-FaultHandler-XML</Policy>
+        <Policy>FC-GenericFaultHandler-XML</Policy>
+        <Policy>FC-Logging-Splunk</Policy>
+        <Policy>FC-SecureProxy</Policy>
+        <Policy>JS-QP-PIMS-PO-Addl-Prefix</Policy>
+        <Policy>JS-QP-PIMS-PO-Addl-Suffix</Policy>
+        <Policy>JS-QP-PIMS-SBC-Addl-Prefix</Policy>
+        <Policy>JS-QP-Zycus-Invoice-Addl</Policy>
+        <Policy>JS-SetTarget</Policy>
+        <Policy>JS-TransformQP-Common</Policy>
+        <Policy>JS-TransformQP-OCR-Supplier</Policy>
+        <Policy>KVM-Coupa</Policy>
+        <Policy>RF-CheckRequestHeaders</Policy>
+        <Policy>SA-SetSpikeArrest</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://JS-QP-PIMS-PO-Addl-Prefix.js</Resource>
+        <Resource>jsc://JS-QP-PIMS-PO-Addl-Suffix.js</Resource>
+        <Resource>jsc://JS-QP-PIMS-SBC-Addl-Prefix.js</Resource>
+        <Resource>jsc://JS-QP-Zycus-Invoice-Addl.js</Resource>
+        <Resource>jsc://JS-SetTarget.js</Resource>
+        <Resource>jsc://JS-TransformQP-Common.js</Resource>
+        <Resource>jsc://JS-TransformQP-OCR-Supplier.js</Resource>
+    </Resources>
+    <Spec></Spec>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

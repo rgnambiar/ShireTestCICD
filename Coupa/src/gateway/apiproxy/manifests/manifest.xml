@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Manifest name="manifest">
+    <Policies>
+        <VersionInfo resourceName="AC-SetIPWhitelist" version="SHA-512:de7a3b0f834b87fff9fae73d3cfa4c705e4d705f9d3e5453c5e7f388068cd13eea6cfe2d334ca78ed9e35965f598300cb6ef211375fd36643cc4443b13d491fd"/>
+        <VersionInfo resourceName="AM-SetRequest" version="SHA-512:bee4f5e8c12d7c9e99ee2c949f69c17cbca6f3857ca6b47b2ebfea29055cf3dd58caf670218e0cc213fdb47f2b81e512c90acaae973bdd84c06e7139a902abbf"/>
+        <VersionInfo resourceName="FC-FaultHandler-XML" version="SHA-512:41a2504de011ea0972047c01d0f8ed7b088a28dc8af3343ea129d152b3deb32c36085cee9a565709da9ebaf31d8e5ff835625222f22f03635d03560ddbd85bad"/>
+        <VersionInfo resourceName="FC-GenericFaultHandler-XML" version="SHA-512:d096c7e9768410bac63fbbed819b7a0f6396a10a897d7420176647e94ac00a049f84b0e5784d5372ef90b42f5b178e969a4891017ce51136905593bc2e4faf0b"/>
+        <VersionInfo resourceName="FC-Logging-Splunk" version="SHA-512:c8f9a3187288187c2ad8bfa36b4c0bb113aca28f5f5bed1e4b8d1928fdeaa26ab87fa80ef89f32c07160afb835ed9c66f0754db832ba1bd734e71ea2277d0830"/>
+        <VersionInfo resourceName="FC-SecureProxy" version="SHA-512:815a45f533cff0c73de4f4ef01863b5263f44f4f1a0075f3a4c80926ce7abebaa0b9dd7442065b7e26c02719485910fc912a15ac9bdef85de668880c76c74e9c"/>
+        <VersionInfo resourceName="JS-QP-PIMS-PO-Addl-Prefix" version="SHA-512:b6c02dcf663dfcd3c033fa64e11ada4fabbbbc59685326408e8756a7afd105e5978fefef49bfe57c7478bcac032efa8d219109aa729e711f5ecc771ec8e3a1bd"/>
+        <VersionInfo resourceName="JS-QP-PIMS-PO-Addl-Suffix" version="SHA-512:db2e9a5ddde468406a83035cc05097349c9eae4d7744ff47603a4128b4ed2d29e45e0e98382eb2ff33ba0f2ea48eb6ad320d7a5904e912bdeff2a60749fd7796"/>
+        <VersionInfo resourceName="JS-QP-PIMS-SBC-Addl-Prefix" version="SHA-512:8bcb0f59228dd1b85936bc872bfdea7e0ad949d908871bdc465516eaf8a148895215659dbec07a79f17b9cef650e112d2e4c80886c760a2b646214a05dbba69d"/>
+        <VersionInfo resourceName="JS-QP-Zycus-Invoice-Addl" version="SHA-512:5b1b6450329d7e712a16f1143b4dcf54d9ad864927b30b605a6f6310d13bc2365ecaa1a8ced53341c3a9419d97b2d40eb52a83415b6c9721c77b50a8257a5048"/>
+        <VersionInfo resourceName="JS-SetTarget" version="SHA-512:af7a2f853c38e92d2d85b00f17e6ed9b6e4f61d73c960781df29cfd157270a829706ce7032bd0f7d22a8c67702170c8d460b2b092fb05248509de152fcc6d099"/>
+        <VersionInfo resourceName="JS-TransformQP-Common" version="SHA-512:a8f9c728407d8e0dd1168f89db88d8dd3d6d2777089f48f511f002aa15ba9959e3aae76d656ef1c224b14c3509b3909a11c31106ef079f5d134847c0609d31e7"/>
+        <VersionInfo resourceName="JS-TransformQP-OCR-Supplier" version="SHA-512:3fc753408793adbd48145ad93fa6b47f995cc73c2eb482cc17fb56f7429b56da6aab71ed0ae3e5268f46a6db6bac921dc18e9637c08e8ec52b3746b383bcedbc"/>
+        <VersionInfo resourceName="KVM-Coupa" version="SHA-512:a0c8f1339275970697e95ffc3a58e732b09cf2b14d2730aaa659fe9dc3dce9be8a9d1cb57df6c4f53e76b57750f7c661801eb36136aadaa869564eebbf68c6eb"/>
+        <VersionInfo resourceName="RF-CheckRequestHeaders" version="SHA-512:50756059a8a3c8a1517bb9df98d208993b72818132dddc4c1b510e5e67d9e7d1988a61750bc796f884942d1baa7aae2c3419f4480c0138dea25fd1b0bf5467a5"/>
+        <VersionInfo resourceName="SA-SetSpikeArrest" version="SHA-512:6e5335b8dd0a3cce0242f664abacc51d9571208241cd5dc6744e2ab97ddf3b78a490868d119a2b6866aa010806aaf111ca37fe6638f6377b3fc7068ccc94d70f"/>
+    </Policies>
+    <ProxyEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:5d2b8331a6bad1762a905b8434d028bfbe746ebb9254dd978c145838f8a54d381aa6973c6407fed58842102a6bb6e2e7081b46d0034796e085e4f84c9306d49c"/>
+    </ProxyEndpoints>
+    <Resources>
+        <VersionInfo resourceName="jsc://JS-QP-PIMS-PO-Addl-Prefix.js" version="SHA-512:5d363172a24fa594f5fb0fc3892198d63648af5363771e38adf918129338def7a7bf4cbc5f8b39b70d663d922181f9d8ad9857d1dc6b6ee905dbfc59acec9972"/>
+        <VersionInfo resourceName="jsc://JS-QP-PIMS-PO-Addl-Suffix.js" version="SHA-512:855665665efd5b76dd05b533cac70810a3167a760875d72df483f5cbe83f08ec3457d80a072fd863efeda9d5c913244b0bd907af8035a7ac792e4f4338268891"/>
+        <VersionInfo resourceName="jsc://JS-QP-PIMS-SBC-Addl-Prefix.js" version="SHA-512:a61afee3f3e57482f6dd98a5aaa1467ace6231ca6d3d3fdc6e7f4c75262ac66662cc9437ec813fcfb711e9bd740300b2ef642b24cd4f4352c7787e60845c8413"/>
+        <VersionInfo resourceName="jsc://JS-QP-Zycus-Invoice-Addl.js" version="SHA-512:990c12290111d87d0e9d8bb57ab4ad10c0f9265af57086c9276bbb5f70fc8f27ecc456cd9c092ad1436baaa268e94000376339942cda358b7b39ee1dfaa5dd12"/>
+        <VersionInfo resourceName="jsc://JS-SetTarget.js" version="SHA-512:b014d9fa20d23941764ffb7bb6d6d922583d50779182aa5ed6aa489076a7660cf800a249d4d62be80d1dfcc542de7e20e4ca7c8aa95c8ebd4537e45c61c1bb08"/>
+        <VersionInfo resourceName="jsc://JS-TransformQP-Common.js" version="SHA-512:75794c2b5e58af3d726f0c8cf8814742f983cbe7d1756dcd6e2f264434c65deeb7d449872cdb1a3ea16fd425f8faf51a2df7849998708dfac89db32d7153be13"/>
+        <VersionInfo resourceName="jsc://JS-TransformQP-OCR-Supplier.js" version="SHA-512:3c2d30c79a460608ac0ed527fe95cc4cdb55aaf65c9c3433c20cf2728f8bc0baddc16ee45e2725eca5b9a029e7e9f33f2f369c266b0a621e5317eb983bd03c8c"/>
+    </Resources>
+    <SharedFlows/>
+    <TargetEndpoints>
+        <VersionInfo resourceName="default" version="SHA-512:f8c998a726040c113f3f7b5048bbcf7d4f427f85f69e461eb3c4f6346546760607cf85e68544a6ce730b67fee88dab43448fa6113b92af79b218eacc9b4ae4a2"/>
+    </TargetEndpoints>
+</Manifest>

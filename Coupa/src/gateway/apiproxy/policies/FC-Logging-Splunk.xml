@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<FlowCallout async="false" continueOnError="false" enabled="true" name="FC-Logging-Splunk">
+    <DisplayName>FC-Logging-Splunk</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <SharedFlowBundle>SF-Logging-Splunk</SharedFlowBundle>
+</FlowCallout>

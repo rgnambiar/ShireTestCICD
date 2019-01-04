@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JS-QP-PIMS-PO-Addl-Suffix">
+    <DisplayName>JS-QP-PIMS-PO-Addl-Suffix</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JS-QP-PIMS-PO-Addl-Suffix.js</ResourceURL>
+</Javascript>

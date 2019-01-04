@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript async="false" continueOnError="false" enabled="true" timeLimit="200" name="JS-TransformQP-Common">
+    <DisplayName>JS-TransformQP-Common</DisplayName>
+    <Properties/>
+    <ResourceURL>jsc://JS-TransformQP-Common.js</ResourceURL>
+</Javascript>

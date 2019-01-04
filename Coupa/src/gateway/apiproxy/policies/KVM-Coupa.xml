@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KVM-Coupa" mapIdentifier="coupa-kvm">
+    <DisplayName>KVM-Coupa</DisplayName>
+    <Properties/>
+    <Get assignTo="private.coupa.api.endpoint">
+        <Key>
+            <Parameter>kvm.coupa.api.endpoint</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.api.apikey.header">
+        <Key>
+            <Parameter>kvm.coupa.api.apikey.header</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.api.apikey.value">
+        <Key>
+            <Parameter>kvm.coupa.api.apikey.value</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.spike.rate">
+        <Key>
+            <Parameter>kvm.coupa.spike.rate</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.api.pims.po.order-lines">
+        <Key>
+            <Parameter>kvm.coupa.api.pims.po.order-lines</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.api.pims.po.sbc.account-allocations">
+        <Key>
+            <Parameter>kvm.coupa.api.pims.po.sbc.account-allocations</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="private.coupa.api.zycus.invoice.limit">
+        <Key>
+            <Parameter>kvm.coupa.api.zycus.invoice.limit</Parameter>
+        </Key>
+    </Get>
+</KeyValueMapOperations>

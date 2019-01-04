@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RF-CheckRequestHeaders">
+    <DisplayName>RF-CheckRequestHeaders</DisplayName>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/xml">
+                <error>
+                    <api_proxy>{apiproxy.name}</api_proxy>
+                    <env>{environment.name}</env>
+                    <code>400</code>
+                    <status>Bad Request</status>
+                    <message>Missing X-APIGEE-CLIENT-NAME Request Header</message>
+                </error>
+            </Payload>
+            <StatusCode>400</StatusCode>
+            <ReasonPhrase>Bad Request</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

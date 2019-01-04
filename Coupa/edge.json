@@ -1,0 +1,67 @@
+{
+    "version": "1.0",
+    "envConfig": {
+        "test": {
+            "kvms": [
+                {
+                    "name": "coupa-cicd-test-kvm",
+					"encrypted":true,
+                    "entry": [
+                        {
+                            "name": "target",
+                            "value": "coupa.com"
+                        },
+                        {
+                            "name": "apikey",
+                            "value": "WEQWPIJFSduwjndsdzcmjgsf"
+                        }
+                    ]
+                }
+            ]
+        },
+        "dev": {
+            "caches": [],
+            "targetServers": []
+        }
+    },
+    "orgConfig": {
+        "apiProducts": [
+            {
+                "name": "Coupa-CICD-Test-Product",
+                "displayName": "Coupa CICD Test Product",
+                "description": "Coupa CICD Test Product",
+                "apiResources": [
+	                    "/**"
+                ],
+                "approvalType": "auto",
+                "environments": [
+                    "test"
+                ],
+                "proxies": [
+                    "Coupa"
+                ],
+                "scopes": []
+            }
+        ],
+        "developers": [
+            {
+                "attributes": [],
+                "email": "coupa@test.com",
+                "firstName": "CICD",
+                "lastName": "Test",
+                "userName": "Coupa CICD Test"
+            }
+        ],
+        "developerApps": {
+            "coupa@test.com": [
+                {
+                    "name": "CoupaCICDTestApp",
+                    "apiProducts": [
+                        "Coupa-CICD-Test-Product"
+                    ],
+                    "scopes": []
+                }
+            ]
+        }
+    }
+}
